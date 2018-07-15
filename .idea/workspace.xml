@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbbbc41f-3432-4b76-93ac-849cb339a98d" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/Innovation.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/board.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/bug_testing.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/card.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/card_list.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/clock.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/collection.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/deck.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/hand.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/player.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/supply_pile.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/Innovation.iml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/board.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/bug_testing.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/card.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/card_list.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/clock.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/collection.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/deck.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/hand.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/player.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/supply_pile.py" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +27,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="bug_testing.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bug_testing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bug_testing.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -36,10 +37,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clock.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="clock.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/clock.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
+            <state relative-caret-position="414">
               <caret line="33" column="65" lean-forward="false" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
               <folding />
             </state>
@@ -484,14 +485,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clock.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="65" lean-forward="false" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-867">
@@ -544,6 +537,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clock.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="33" column="65" lean-forward="false" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
           <folding />
         </state>
       </provider>
