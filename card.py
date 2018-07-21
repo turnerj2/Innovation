@@ -40,3 +40,11 @@ class Card:
                                                 self.color.title())
         str_2 = "[{}, {}, {}]".format(self.left, self.right, self.up)
         return (str_1 + '\n' + str_2)
+
+    def score(self, score_pile):
+        """
+        Adds a score to a given score pile.
+        """
+
+        score_pile.score_dict.setdefault(self.age, []).append(self)
+        score_pile.score += self.age

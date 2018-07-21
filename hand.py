@@ -28,9 +28,16 @@ class Hand:
         """
         Prints the name of the cards in the hand.
         """
-
-        str_1 = "The contents of Player {}'s hand:".format(self.num)
+        str_1 = ''
         str_2 = ''
-        for card in self.cards:
-            str_2 += '{}\n'.format(card.name)
-        return (str_1 + '\n' + str_2)
+
+        if self.cards:
+            str_1 = "The contents of Player {}'s hand:\n".format(self.num)
+
+            for card in self.cards:
+                str_2 += '{}\n'.format(card.name)
+
+        elif not self.cards:
+            str_1 = "Player {} has no cards!".format(self.num)
+
+        return (str_1 + str_2)

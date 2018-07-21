@@ -7,11 +7,15 @@ Import necessary packages, classes, and variables.
 """
 
 from random import shuffle
+from collections import Counter
 
 from card import Card
 from supply_pile import Supply_Pile
 from hand import Hand
 from clock import Clock
+from color_pile import Color_Pile
+from board import Board
+from player import Player
 
 from card_list import *
 
@@ -22,38 +26,35 @@ Bug-testing.
 if __name__ == '__main__':
 
     prehistory = Supply_Pile(age=1, cards=age_1_cards)
-    classical = Supply_Pile(age=2, cards = age_2_cards)
+    classical = Supply_Pile(age=2, cards=age_2_cards)
 
     prehistory.shuffle()
-    classical.shuffle()
+    # classical.shuffle()
+
+    red_cards = []
+    for card in prehistory.cards:
+        if card.color == 'red':
+            red_cards.append(card)
+
+    yellow_cards = []
+    for card in prehistory.cards:
+        if card.color == 'yellow':
+            yellow_cards.append(card)
 
     hand_0 = Hand(num=0)
 
-    clock = Clock(supply_piles = [prehistory, classical])
+    clock = Clock(supply_piles=[prehistory, classical])
 
-    print(clock)
+    red_color_pile = Color_Pile(color='red',
+                                 cards=red_cards, splay='')
 
-    prehistory.draw(hand_0, 5)
+    yellow_color_pile = Color_Pile(color='yellow',
+                                cards=yellow_cards, splay='')
 
-    print(clock)
+    board = Board(num=0, red=red_color_pile, yellow=yellow_color_pile)
 
-    '''b = Board()
+    board.splay_color_pile(color='red', direction='up')
 
-    d_p = []
+    player = Player(num=0, board=board)
 
-    from string import ascii_lowercase
-    names = list(ascii_lowercase)
-
-    for i in range(5):
-        deck = Deck(i, [Card(names[colors.index(color)], i, color) for color in colors])
-        d_p.append(deck)
-
-    coll = Collection(d_p)
-
-    hand = Deck()
-
-    coll.draw(1, hand, 5)
-
-    hand.re_turn(coll, 'b') # Working on this
-
-    print(hand)'''
+    print(player)
