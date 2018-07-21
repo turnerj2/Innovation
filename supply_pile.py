@@ -65,4 +65,4 @@ class Supply_Pile:
         self.cards = deck_cards
         player.hand.cards = hand_cards
 
-        print("Player {} drew {} card(s) from age {}.".format(player.num, n, self.age))
+        print("Player {} drew {} card(s) from age {}.\n".format(player.num, n, self.age))

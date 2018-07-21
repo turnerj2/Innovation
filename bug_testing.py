@@ -28,35 +28,14 @@ if __name__ == '__main__':
     prehistory = Supply_Pile(age=1, cards=age_1_cards)
     classical = Supply_Pile(age=2, cards=age_2_cards)
 
-    # prehistory.shuffle()
-    # classical.shuffle()
-
-    red_cards = []
-    for card in prehistory.cards:
-        if card.color == 'red':
-            red_cards.append(card)
-
-    yellow_cards = []
-    for card in prehistory.cards:
-        if card.color == 'yellow':
-            yellow_cards.append(card)
-
     clock = Clock(supply_piles=[prehistory, classical])
 
-    red_color_pile = Color_Pile(color='red',
-                                 cards=red_cards, splay='')
+    player_0 = Player(num=0)
+    player_1 = Player(num=1)
 
-    yellow_color_pile = Color_Pile(color='yellow',
-                                cards=yellow_cards, splay='')
+    clock.draw(player_0, age=1, n=2)
+    clock.draw(player_1, age=1, n=2)
 
-    board_0 = Board(num=0, red=red_color_pile, yellow=yellow_color_pile)
-
-    board_0.splay_color_pile(color='red', direction='up')
-
-    player_0 = Player(num=0, board=board_0)
-
-    clock.draw(player_0, 1, 5)
-
-    player_0.meld(card_name='Code of Laws')
+    player_0.draw(clock)
 
     print("DONE!")

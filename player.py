@@ -41,8 +41,32 @@ class Player:
 
         str_1 = "Player {}'s board:\n".format(self.num) + str(self.board)
         str_2 = "Player {}'s hand:\n".format(self.num) + str(self.hand)
-        str_3 = "\n-------"
+        str_3 = "-------"
         return(str_1 + str_2 + str_3)
+
+    def draw(self, clock):
+        """
+        Performs a draw action.
+        """
+
+        player = self
+
+        red_age, yellow_age, green_age, blue_age, purple_age = 1, 1, 1, 1, 1
+
+        if self.board.red.cards:
+            red_age = self.board.red.cards[0].age
+        if self.board.yellow.cards:
+            yellow_age = self.board.yellow.cards[0].age
+        if self.board.green.cards:
+            green_age = self.board.green.cards[0].age
+        if self.board.blue.cards:
+            blue_age = self.board.blue.cards[0].age
+        if self.board.purple.cards:
+            purple_age = self.board.purple.cards[0].age
+
+        board_age = max(red_age, yellow_age, green_age, blue_age, purple_age)
+
+        clock.draw(player, age=board_age, n=1)
 
     def meld(self, card_name):
         """
