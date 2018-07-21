@@ -43,3 +43,17 @@ class Player:
         str_2 = "Player {}'s hand:\n".format(self.num) + str(self.hand)
         str_3 = "\n-------"
         return(str_1 + str_2 + str_3)
+
+    def meld(self, card_name):
+        """
+        Melds a card from a player's hand.
+        """
+
+        self.hand.meld(card_name, self)
+
+    def score_card(self, card_name):
+        """
+        Scores a card from a player's hand.
+        """
+
+        self.hand.score_card(card_name, self)

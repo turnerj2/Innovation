@@ -46,6 +46,6 @@ class Score_Pile:
         str_1 = "Player {} has {} points total. They have:\n".format(self.num, self.score)
         str_2 = ''
         for key in self.score_dict.keys():
-            str_2 += "{} cards worth {} points.\n".format(len(self.score_dict[key]), key)
+            str_2 += "{} card(s) from age {}.\n".format(len(self.score_dict[key]), key)
 
         return(str_1 + str_2)

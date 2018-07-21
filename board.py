@@ -58,6 +58,21 @@ class Board:
 
         return (str_1 + str_2 + str_3)
 
+    def update_icons(self):
+        """
+        Updates the icons provided by the color piles.
+        """
+
+        self.red.update_icons()
+        self.yellow.update_icons()
+        self.green.update_icons()
+        self.blue.update_icons()
+        self.purple.update_icons()
+
+        self.icons_dict = Counter(self.red.icons_dict) + \
+                          Counter(self.yellow.icons_dict) + Counter(self.green.icons_dict) + \
+                          Counter(self.blue.icons_dict) + Counter(self.purple.icons_dict)
+
     def splay_color_pile(self, color='', direction=''):
         """
         Splays a specified color pile.

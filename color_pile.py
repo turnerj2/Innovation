@@ -69,7 +69,7 @@ class Color_Pile:
                     "and is not splayed.\n".format(
                 self.color, len(self.cards), self.splay if self.splay else 'not')
         elif self.cards and self.splay:
-            str_1 = "The {} color pile contains {} cards " \
+            str_1 = "The {} color pile contains {} card(s) " \
                     "and is splayed {}.\n".format(
                 self.color, len(self.cards), self.splay)
 
@@ -84,6 +84,42 @@ class Color_Pile:
 
         return (str_1 + str_2 + str_3)
 
+    def update_icons(self):
+        """
+        Updates icons provided by the pile.
+        """
+
+        direction = self.splay
+
+        if self.cards:
+            top_card = self.cards[0]
+            top_icons = top_card.up[:]
+            top_icons.append(top_card.right[0])
+
+            if not direction:
+                self.icons_dict = Counter(top_icons)
+
+            elif direction == 'left':
+                icons = top_icons[:]
+                for card in self.cards:
+                    icons.extend(card.left)
+                    self.icons_dict = Counter(icons)
+
+            elif direction == 'right':
+                icons = top_icons[:]
+                for card in self.cards:
+                    icons.extend(card.right)
+                    self.icons_dict = Counter(icons)
+
+            elif direction == 'up':
+                icons = top_icons[:]
+                for card in self.cards:
+                    icons.extend(card.up)
+                    self.icons_dict = Counter(icons)
+
+        elif not self.cards:
+            self.icons_dict = {}
+
     def splay_direction(self, direction=''):
         """
         Splays the color pile so that it has no splay, or is splayed left, right, or up.
@@ -91,27 +127,4 @@ class Color_Pile:
 
         self.splay = direction
 
-        top_card = self.cards[0]
-        top_icons = top_card.up[:]
-        top_icons.append(top_card.right[0])
-
-        if not direction:
-            self.icons_dict = Counter(top_icons)
-
-        elif direction == 'left':
-            icons = top_icons[:]
-            for card in self.cards:
-                icons.extend(card.left)
-                self.icons_dict = Counter(icons)
-
-        elif direction == 'right':
-            icons = top_icons[:]
-            for card in self.cards:
-                icons.extend(card.right)
-                self.icons_dict = Counter(icons)
-
-        elif direction == 'up':
-            icons = top_icons[:]
-            for card in self.cards:
-                icons.extend(card.up)
-                self.icons_dict = Counter(icons)
+        self.update_icons()

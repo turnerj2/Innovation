@@ -37,7 +37,7 @@ class Supply_Pile:
         for card in self.cards:
             card_names += card.name + '\n'
 
-        return (str_1 + card_names)
+        return(str_1 + card_names)
 
     def shuffle(self):
         """
@@ -48,20 +48,21 @@ class Supply_Pile:
         shuffle(cards)
         self.cards = cards
 
-    def draw(self, hand, n):
+    def draw(self, player, n):
         """
         Draw n cards from the supply pile and add them to hand.
         """
 
         deck_cards = self.cards[:]
-        hand_cards = hand.cards[:]
+        hand_cards = player.hand.cards[:]
 
         for i in range(n):
-            drawn_card = deck_cards.pop(0)
+            drawn_card = deck_cards[0]
+            del deck_cards[0]
             hand_cards.append(drawn_card)
             i += 1
 
         self.cards = deck_cards
-        hand.cards = hand_cards
+        player.hand.cards = hand_cards
 
-        print("Player {} drew {} card(s) from age {}.".format(hand.num, n, self.age))
+        print("Player {} drew {} card(s) from age {}.".format(player.num, n, self.age))

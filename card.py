@@ -37,14 +37,38 @@ class Card:
         """
 
         str_1 = "[{}, {}, {}]".format(self.name, self.age,
-                                                self.color.title())
+                                      self.color.title())
         str_2 = "[{}, {}, {}]".format(self.left, self.right, self.up)
         return (str_1 + '\n' + str_2)
 
-    def score(self, score_pile):
+    def meld(self, player):
         """
-        Adds a score to a given score pile.
+        Melds a card onto a player's board.
         """
 
-        score_pile.score_dict.setdefault(self.age, []).append(self)
-        score_pile.score += self.age
+        color = self.color
+        if color == 'red':
+            player.board.red.cards.insert(0, self)
+        elif color == 'yellow':
+            player.board.yellow.cards.insert(0, self)
+        elif color == 'green':
+            player.board.green.cards.insert(0, self)
+        elif color == 'blue':
+            player.board.blue.cards.insert(0, self)
+        elif color == 'purple':
+            player.board.purple.cards.insert(0, self)
+
+        player.board.update_icons()
+
+        str_1 = "Player {} has melded {}.\n".format(player.num, self.name)
+
+        print(str_1)
+
+    def score_card(self, player):
+        """
+        Adds a score to a given player.
+        """
+
+        player.score_pile.score_dict.setdefault(self.age, []).append(self)
+        player.score_pile.score += self.age
+        player.score += self.age
