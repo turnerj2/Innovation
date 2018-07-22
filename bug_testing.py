@@ -9,6 +9,7 @@ Import necessary packages, classes, and variables.
 from random import shuffle
 from collections import Counter
 
+from dogma import Dogma
 from card import Card
 from supply_pile import Supply_Pile
 from hand import Hand

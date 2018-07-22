@@ -6,6 +6,7 @@ Defines a class for the player.
 Import necessary packages and classes.
 """
 
+from dogma import Dogma
 from card import Card
 from hand import Hand
 from color_pile import Color_Pile
