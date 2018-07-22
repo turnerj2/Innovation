@@ -38,4 +38,10 @@ if __name__ == '__main__':
 
     player_0.draw(clock)
 
+    print(player_0.hand)
+
+    player_0.return_card('Code of Laws', clock)
+
+    print(player_0)
+
     print("DONE!")
