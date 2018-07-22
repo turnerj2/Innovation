@@ -64,6 +64,22 @@ class Card:
 
         print(str_1)
 
+    def return_card(self, clock):
+        """
+        Returns a card to the appropriate supply pile.
+        """
+
+        supply_piles = {}
+
+        for supply_pile in clock.supply_piles:
+            supply_piles[supply_pile.age] = supply_pile
+
+        to_return_supply_pile = supply_piles[self.age]
+        to_return_supply_pile.cards.append(self)
+
+        str_1 = "Returned {} to the clock.\n".format(self.name)
+
+
     def score_card(self, player):
         """
         Adds a score to a given player.
