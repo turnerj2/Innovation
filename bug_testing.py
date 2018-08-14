@@ -19,6 +19,9 @@ from board import Board
 from player import Player
 
 from card_list import *
+from dogma_list import *
+
+from game_setup import *
 
 """
 Bug-testing.
@@ -26,23 +29,15 @@ Bug-testing.
 
 if __name__ == '__main__':
 
-    prehistory = Supply_Pile(age=1, cards=age_1_cards)
-    classical = Supply_Pile(age=2, cards=age_2_cards)
+    for player in player_list:
+        clock.draw(player, age=1, n=3)
 
-    clock = Clock(supply_piles=[prehistory, classical])
+    print(player_2.hand)
 
-    player_0 = Player(num=0)
-    player_1 = Player(num=1)
+    player_2.meld("The Wheel")
 
-    clock.draw(player_0, age=1, n=2)
-    clock.draw(player_1, age=1, n=2)
+    player_2.activate_dogma(player_list, "The Wheel", clock)
 
-    player_0.draw(clock)
-
-    print(player_0.hand)
-
-    player_0.return_card('Code of Laws', clock)
-
-    print(player_0)
+    print(player_2.hand)
 
     print("DONE!")

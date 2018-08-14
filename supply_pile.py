@@ -54,7 +54,7 @@ class Supply_Pile:
         """
 
         deck_cards = self.cards[:]
-        hand_cards = player.hand.cards[:]
+        hand_cards = list(player.hand.cards)[:]
 
         for i in range(n):
             drawn_card = deck_cards[0]
