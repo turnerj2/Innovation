@@ -16,11 +16,15 @@ def non_demand_share(player, share_flag=0):
     Returns if non-demand Dogma is shared.
     """
 
-    if type(share_flag) == bool:  # Opponents doing Dogma will input Bool share_flag.
+    if type(share_flag) == bool and not share_flag:  # Opponents doing Dogma will input Bool share_flag.
         share_flag = True
-        str_1 = "Share flag is now {}.".format(share_flag)
-
-        print('{}'.format(str_1))
+        str_1 = "Share flag is now {}.\n".format(share_flag)
+    elif type(share_flag) == bool and share_flag:
+        str_1 = "Share flag remains True.\n"
+    elif type(share_flag) == int:
+        str_1 = "Share flag remains False.\n"
+    
+    print('{}'.format(str_1))
 
     return (share_flag)
 

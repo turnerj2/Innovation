@@ -64,5 +64,10 @@ class Supply_Pile:
 
         self.cards = deck_cards
         player.hand.cards = hand_cards
+        
+        if n > 0:
+            str_1 = "Player {} drew {} card(s) from age {}.\n".format(player.num, n, self.age)
+        elif n == 0:
+            str_1 = "Age {} is empty, moving up...".format(self.age)
 
-        print("Player {} drew {} card(s) from age {}.\n".format(player.num, n, self.age))
+        print(str_1)

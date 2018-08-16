@@ -23,7 +23,7 @@ class Player:
     Class to represent the player.
     """
 
-    def __init__(self, num=0, board=None, hand=None, score_pile=None):
+    def __init__(self, num=0, board=0, hand=0, score_pile=0):
         """
         Players will have a number, board, hand,
         scored cards, and achievements.
@@ -50,8 +50,6 @@ class Player:
         Performs a draw action.
         """
 
-        player = self
-
         red_age, yellow_age, green_age, blue_age, purple_age = 1, 1, 1, 1, 1
 
         if self.board.red.cards:
@@ -67,41 +65,38 @@ class Player:
 
         board_age = max(red_age, yellow_age, green_age, blue_age, purple_age)
 
-        clock.draw(player, age=board_age, n=1)
+        clock.draw(self, age=board_age, n=1)
 
     def meld(self, card_name):
         """
         Melds a card from a player's hand.
         """
-
-        card_dict = {}
-
-        for card in self.hand.cards:
-            card_dict[card.name] = card
-
-        to_meld = card_dict[card_name]
+        
+        to_meld = list(filter(lambda x : x.name == card_name, 
+                       self.hand.cards))[0]
 
         color = to_meld.color
+        
+        board = self.board
+        
         if color == 'red':
-            self.board.red.cards.insert(0, to_meld)
+            board.red.cards.insert(0, to_meld)
         elif color == 'yellow':
-            self.board.yellow.cards.insert(0, to_meld)
+            board.yellow.cards.insert(0, to_meld)
         elif color == 'green':
-            self.board.green.cards.insert(0, to_meld)
+            board.green.cards.insert(0, to_meld)
         elif color == 'blue':
-            self.board.blue.cards.insert(0, to_meld)
+            board.blue.cards.insert(0, to_meld)
         elif color == 'purple':
-            self.board.purple.cards.insert(0, to_meld)
+            board.purple.cards.insert(0, to_meld)
 
-        self.board.update_icons()
+        board.update_icons()
 
         str_1 = "Player {} has melded {}.\n".format(self.num, to_meld.name)
 
         print(str_1)
 
-        del card_dict[card_name] # Take the melded card out of the hand.
-
-        self.hand.cards = card_dict.values()
+        self.hand.cards.remove(to_meld) # Take the melded card out of the hand.
 
     def activate_dogma(self, player_list, card_name, clock):
         """
@@ -112,8 +107,8 @@ class Player:
         str_1 = "Player {} has Dogma'd {}.\n".format(self.num, card_name)
         print(str_1)
 
-        card_dict = {}
         color_pile_tops = []
+
         if self.board.red.cards:
             color_pile_tops.append(self.board.red.cards[0])
         if self.board.yellow.cards:
@@ -125,10 +120,8 @@ class Player:
         if self.board.purple.cards:
             color_pile_tops.append(self.board.purple.cards[0])
 
-        for card in color_pile_tops:
-            card_dict[card.name] = card
-
-        to_dogma = card_dict[card_name]
+        to_dogma = list(filter(lambda x : x.name == card_name, 
+                            color_pile_tops))[0]
         dogma_effect = to_dogma.dogma
         dogma_function = dogma_effect.function
         dogma_icon = dogma_effect.icon
@@ -143,19 +136,23 @@ class Player:
         for opponent in opponents:  # Check if each opponent performs the Dogma.
             if (dogma_effect.demand and
                     opponent.board.icons_dict[dogma_icon] < player_icon_count):
+                str_1 = "Player {} is affected!\n".format(opponent.num)
+                print(str_1)
                 dogma_function(self, opponent, clock, share_flag)
             elif (not dogma_effect.demand and
-                  opponent.board.icons_dict[dogma_icon] > player_icon_count):
+                  opponent.board.icons_dict[dogma_icon] >= player_icon_count):
+                str_1 = "Player {} is affected!\n".format(opponent.num)
+                print(str_1)
                 share_flag = dogma_function(opponent, clock, share_flag)
             else:
-                str_1 = "Player {} is unaffected.".format(opponent.num)
+                str_1 = "Player {} is unaffected.\n".format(opponent.num)
                 print(str_1)
 
         if not dogma_effect.demand:  # If not demand, player does the Dogma.
             dogma_function(self, clock, share_flag)
 
         if share_flag:
-            str_share = "The Dogma has been shared!\n"
+            str_share = "The Dogma has been shared! Took free draw action.\n"
             self.draw(clock)
 
         elif not share_flag:
@@ -194,12 +191,8 @@ class Player:
         Scores a card from a player's hand.
         """
 
-        card_dict = {}
-
-        for card in self.hand.cards:
-            card_dict[card.name] = card
-
-        to_score = card_dict[card_name]
+        to_score = list(filter(lambda x : x.name == card_name, 
+                               self.hand.cards))[0]
 
         self.score_pile.score_dict.setdefault(to_score.age, []).append(to_score)
         self.score_pile.score += to_score.age

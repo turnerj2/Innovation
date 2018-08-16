@@ -21,21 +21,18 @@ class Board:
     Class for a player's board.
     """
 
-    def __init__(self, num=0, red=Color_Pile(color='red'),
-                 yellow=Color_Pile(color='yellow'), green=Color_Pile(color='green'),
-                 blue=Color_Pile(color='blue'), purple=Color_Pile(color='purple'),
-                 icons_dict=None):
+    def __init__(self, num=0, icons_dict=0):
         """
         A board is made up of five color piles, one for each color.
         The num is to distinguish boards.
         """
 
         self.num = num
-        self.red = red
-        self.yellow = yellow
-        self.green = green
-        self.blue = blue
-        self.purple = purple
+        self.red = Color_Pile(color='red')
+        self.yellow = Color_Pile(color='yellow')
+        self.green = Color_Pile(color='green')
+        self.blue = Color_Pile(color='blue')
+        self.purple = Color_Pile(color='purple')
         self.icons_dict = Counter(self.red.icons_dict) + \
             Counter(self.yellow.icons_dict) + Counter(self.green.icons_dict) + \
             Counter(self.blue.icons_dict) + Counter(self.purple.icons_dict)
@@ -45,16 +42,18 @@ class Board:
         Color piles on board will be printed in ROYGBV order.
         """
 
-        str_1 = "-------\nBoard {} has the following icons:\n".format(self.num)
+        str_spc = "-------\n"
+
+        str_1 = "{}Board {} has the following icons:\n".format(str_spc, self.num)
         str_2 = ''
         for key in sorted(filter(None, self.icons_dict.keys())):
             str_2 += "{} : {}\n".format(str(key).title(), self.icons_dict[key])
-
-        str_3 = "-------\n" + "Red Pile: " + str(self.red)
-        str_3 += "-------\n" + "Yellow Pile: " + str(self.yellow)
-        str_3 += "-------\n" + "Green Pile: " + str(self.green)
-        str_3 += "-------\n" + "Blue Pile: " + str(self.blue)
-        str_3 += "-------\n" + "Purple Pile: " + str(self.purple) + "-------\n"
+        
+        str_3 =  '{}Red Pile: {}'.format(str_spc, str(self.red))
+        str_3 += '{}Yellow Pile: {}'.format(str_spc, str(self.yellow))
+        str_3 += '{}Green Pile: {}'.format(str_spc, str(self.green))
+        str_3 += '{}Blue Pile: {}'.format(str_spc, str(self.blue))
+        str_3 += '{}Purple Pile: {}{}'.format(str_spc, str(self.purple), str_spc)
 
         return (str_1 + str_2 + str_3)
 
@@ -80,15 +79,16 @@ class Board:
 
         to_splay = color.lower()
         to_direction = direction.lower()
+        
         if to_splay == 'red':
             self.red.splay_direction(to_direction)
-        if to_splay == 'yellow':
+        elif to_splay == 'yellow':
             self.yellow.splay_direction(to_direction)
-        if to_splay == 'green':
+        elif to_splay == 'green':
             self.green.splay_direction(to_direction)
-        if to_splay == 'blue':
+        elif to_splay == 'blue':
             self.blue.splay_direction(to_direction)
-        if to_splay == 'purple':
+        elif to_splay == 'purple':
             self.purple.splay_direction(to_direction)
 
         self.icons_dict = Counter(self.red.icons_dict) + \

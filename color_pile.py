@@ -20,13 +20,13 @@ class Color_Pile:
     A collection of cards of a single color, and tallies up the icons based on the splay.
     """
 
-    def __init__(self, color='', cards=None, splay='', icons_dict=None):
+    def __init__(self, color='', cards=0, splay='', icons_dict=None):
         """
         A color pile has a color, cards, splay, and number of icons.
         """
 
         self.color = color
-        self.cards = cards if cards is not None else []
+        self.cards = cards if cards else []
         self.splay = splay
 
         top_card = self.cards[0] if cards else None
