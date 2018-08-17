@@ -123,7 +123,7 @@ class Player:
         to_dogma = list(filter(lambda x : x.name == card_name, 
                             color_pile_tops))[0]
         dogma_effect = to_dogma.dogma
-        dogma_function = dogma_effect.function
+        dogma_functions = dogma_effect.function
         dogma_icon = dogma_effect.icon
 
         opponents = list(player_list[:])
@@ -131,25 +131,30 @@ class Player:
 
         player_icon_count = self.board.icons_dict[dogma_icon]
 
+        opponent_icon_counts = {}
+        for opponent in opponents:
+            opponent_icon_counts[opponent] = opponent.board.icons_dict[dogma_icon]
+
         share_flag = False
 
-        for opponent in opponents:  # Check if each opponent performs the Dogma.
-            if (dogma_effect.demand and
-                    opponent.board.icons_dict[dogma_icon] < player_icon_count):
-                str_1 = "Player {} is affected!\n".format(opponent.num)
-                print(str_1)
-                dogma_function(self, opponent, clock, share_flag)
-            elif (not dogma_effect.demand and
-                  opponent.board.icons_dict[dogma_icon] >= player_icon_count):
-                str_1 = "Player {} is affected!\n".format(opponent.num)
-                print(str_1)
-                share_flag = dogma_function(opponent, clock, share_flag)
-            else:
-                str_1 = "Player {} is unaffected.\n".format(opponent.num)
-                print(str_1)
+        for dogma_function in dogma_functions:
+            for opponent in opponents:  # Check if each opponent performs the Dogma.
+                if (dogma_effect.demand and
+                    opponent_icon_counts[opponent] < player_icon_count):
+                    str_1 = "Player {} is affected!\n".format(opponent.num)
+                    print(str_1)
+                    dogma_function(self, opponent, clock, share_flag)
+                elif (not dogma_effect.demand and
+                      opponent_icon_counts[opponent] >= player_icon_count):
+                    str_1 = "Player {} is affected!\n".format(opponent.num)
+                    print(str_1)
+                    share_flag = dogma_function(opponent, clock, share_flag)
+                else:
+                    str_1 = "Player {} is unaffected.\n".format(opponent.num)
+                    print(str_1)
 
-        if not dogma_effect.demand:  # If not demand, player does the Dogma.
-            dogma_function(self, clock, share_flag)
+            if not dogma_effect.demand:  # If not demand, player does the Dogma.
+                dogma_function(self, clock, share_flag)
 
         if share_flag:
             str_share = "The Dogma has been shared! Took free draw action.\n"

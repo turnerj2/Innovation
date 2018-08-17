@@ -44,8 +44,9 @@ sailing = Card(name='Sailing', age=1, color='green',
                     up=['crown', None, 'leaf'])
 
 the_wheel = Card(name='The Wheel', age=1, color='green',
-                 dogma=Dogma(icon='castle', demand=False, function=the_wheel_dogma),
-                 left=['castle'], right=[None, 'castle'], up=['castle', 'castle', 'castle'])
+                 dogma=Dogma(icon='castle', demand=False, function=[the_wheel_dogma]),
+                 left=['castle'], right=[None, 'castle'],
+                 up=['castle', 'castle', 'castle'])
 
 clothing = Card(name='Clothing', age=1, color='green',
                     dogma=Dogma(), left=['leaf'], right=[None, 'crown'],

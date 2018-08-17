@@ -25,9 +25,9 @@ class Dogma:
         self.icon = icon
         self.demand = demand
         if self.demand and not function:
-            self.function = default_demand_dogma
+            self.function = [default_demand_dogma]
         elif not self.demand and not function:
-            self.function = default_non_demand_dogma
+            self.function = [default_non_demand_dogma]
         elif function:
             self.function = function
 
