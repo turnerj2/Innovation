@@ -72,6 +72,25 @@ class Board:
                           Counter(self.yellow.icons_dict) + Counter(self.green.icons_dict) + \
                           Counter(self.blue.icons_dict) + Counter(self.purple.icons_dict)
 
+    def get_colors(self):
+        """
+        Checks what colors player has on the board.
+        """
+
+        colors = []
+        if self.red.cards:
+            colors.append('red')
+        if self.yellow.cards:
+            colors.append('yellow')
+        if self.green.cards:
+            colors.append('green')
+        if self.blue.cards:
+            colors.append('blue')
+        if self.purple.cards:
+            colors.append('purple')
+
+        return(colors)
+
     def splay_color_pile(self, color='', direction=''):
         """
         Splays a specified color pile.

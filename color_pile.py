@@ -128,3 +128,7 @@ class Color_Pile:
         self.splay = direction
 
         self.update_icons()
+
+        str_1 = "The {} pile has bben splayed {}.\n".format(self.color, direction)
+
+        print(str_1)

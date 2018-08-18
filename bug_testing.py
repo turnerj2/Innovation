@@ -31,18 +31,12 @@ if __name__ == '__main__':
 
     for player in player_list:
         clock.draw(player, age=1, n=2)
+        print(player.hand)
 
-    player_3.meld("The Wheel")
-    
-    player_1.draw(clock)
-    player_1.draw(clock)
-    player_1.draw(clock)
-    player_1.draw(clock)
-    player_1.draw(clock)
-    
-    player_1.meld("Masonry")
-    
-    player_3.activate_dogma(player_list, "The Wheel", clock)
-    
+    player_0.meld("Code of Laws")
+
+    player_1.meld("City States")
+
+    player_0.activate_dogma(player_list, "Code of Laws", clock)
 
     print("DONE!")

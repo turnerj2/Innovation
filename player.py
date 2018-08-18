@@ -209,3 +209,34 @@ class Player:
             self.num, card_name, self.score)
 
         print(str_1)
+
+    def tuck(self, card_name):
+        """
+        Tucks a card from a player's hand.
+        """
+
+        to_tuck = list(filter(lambda x: x.name == card_name,
+                              self.hand.cards))[0]
+
+        color = to_tuck.color
+
+        board = self.board
+
+        if color == 'red':
+            board.red.cards.append(to_tuck)
+        elif color == 'yellow':
+            board.yellow.cards.append(to_tuck)
+        elif color == 'green':
+            board.green.cards.append(to_tuck)
+        elif color == 'blue':
+            board.blue.cards.append(to_tuck)
+        elif color == 'purple':
+            board.purple.cards.append(to_tuck)
+
+        board.update_icons()
+
+        str_1 = "Player {} has tucked {}.\n".format(self.num, to_tuck.name)
+
+        print(str_1)
+
+        self.hand.cards.remove(to_tuck)  # Take the melded card out of the hand.

@@ -16,7 +16,9 @@ All of the cards.
 """
 
 code_of_laws = Card(name='Code of Laws', age=1, color='purple',
-                    dogma=Dogma(), left=['leaf'], right=[None, 'crown'],
+                    dogma=Dogma(icon='crown',
+                                demand=False, function=[code_of_laws_dogma]),
+                    left=['leaf'], right=[None, 'crown'],
                     up=['crown', 'crown', 'leaf'])
 
 mysticism = Card(name='Mysticism', age=1, color='purple',
@@ -44,7 +46,8 @@ sailing = Card(name='Sailing', age=1, color='green',
                     up=['crown', None, 'leaf'])
 
 the_wheel = Card(name='The Wheel', age=1, color='green',
-                 dogma=Dogma(icon='castle', demand=False, function=[the_wheel_dogma]),
+                 dogma=Dogma(icon='castle',
+                             demand=False, function=[the_wheel_dogma]),
                  left=['castle'], right=[None, 'castle'],
                  up=['castle', 'castle', 'castle'])
 
